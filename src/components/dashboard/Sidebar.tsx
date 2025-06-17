@@ -15,14 +15,18 @@ interface SidebarProps {
 }
 
 const navigation = [
-  { name: "Dashboard", icon: Home, current: true },
-  { name: "My E-commerce", icon: ShoppingCart, current: false },
-  { name: "Search Lab", icon: Search, current: false },
-  { name: "Search Lab", icon: Search, current: false },
-  { name: "Filter State", icon: Filter, current: false },
-  { name: "Real Time State", icon: Activity, current: false },
-  { name: "Boosting Rules", icon: Zap, current: false },
-  { name: "Setting", icon: Settings, current: false },
+  { id: "dashboard", name: "Dashboard", icon: Home, current: true },
+  {
+    id: "ecommerce",
+    name: "My E-commerce",
+    icon: ShoppingCart,
+    current: false,
+  },
+  { id: "search-lab", name: "Search Lab", icon: Search, current: false },
+  { id: "filter-state", name: "Filter State", icon: Filter, current: false },
+  { id: "real-time", name: "Real Time State", icon: Activity, current: false },
+  { id: "boosting", name: "Boosting Rules", icon: Zap, current: false },
+  { id: "setting", name: "Setting", icon: Settings, current: false },
 ];
 
 export function Sidebar({ className }: SidebarProps) {
@@ -45,7 +49,7 @@ export function Sidebar({ className }: SidebarProps) {
       <nav className="flex-1 px-4 py-6 space-y-2">
         {navigation.map((item) => (
           <a
-            key={item.name}
+            key={item.id}
             href="#"
             className={cn(
               "flex items-center px-3 py-2.5 text-sm font-medium rounded-lg transition-colors",

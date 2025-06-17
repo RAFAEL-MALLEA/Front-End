@@ -31,12 +31,8 @@ export function Sidebar({ className }: SidebarProps) {
       {/* User Profile Section */}
       <div className="p-6 border-b border-white/10">
         <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-            <img
-              src="/api/placeholder/40/40"
-              alt="Sophie Devine"
-              className="w-8 h-8 rounded-full"
-            />
+          <div className="w-10 h-10 bg-orange-400 rounded-full flex items-center justify-center text-white font-semibold text-sm">
+            SD
           </div>
           <div>
             <p className="text-white font-medium text-sm">Sophie Devine</p>

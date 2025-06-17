@@ -7,13 +7,14 @@ import {
   XAxis,
   YAxis,
   ResponsiveContainer,
-  Legend,
+  Tooltip,
+  CartesianGrid,
 } from "recharts";
 
 // Data for the donut chart
 const donutData = [
-  { name: "Red Hat", value: 15000, color: "#EF4444" },
-  { name: "Cricket bat", value: 20000, color: "#10B981" },
+  { name: "Red Hat", value: 15000, color: "#EF4444", percentage: 42.9 },
+  { name: "Cricket bat", value: 20000, color: "#10B981", percentage: 57.1 },
 ];
 
 // Data for the bar chart
@@ -24,6 +25,79 @@ const barData = [
   { month: "APR", searches: 320, clicks: 450, cart: 380 },
   { month: "MAY", searches: 380, clicks: 520, cart: 420 },
 ];
+
+// Custom tooltip for donut chart
+const DonutTooltip = ({ active, payload }: any) => {
+  if (active && payload && payload.length) {
+    const data = payload[0].payload;
+    return (
+      <div className="bg-white p-3 rounded-lg shadow-lg border border-gray-200">
+        <div className="flex items-center space-x-2 mb-2">
+          <div
+            className="w-3 h-3 rounded-full"
+            style={{ backgroundColor: data.color }}
+          />
+          <span className="font-medium text-dashboard-text-primary">
+            {data.name}
+          </span>
+        </div>
+        <div className="space-y-1 text-sm">
+          <p className="text-dashboard-text-secondary">
+            Clicks:{" "}
+            <span className="font-medium text-dashboard-text-primary">
+              {data.value.toLocaleString()}
+            </span>
+          </p>
+          <p className="text-dashboard-text-secondary">
+            Percentage:{" "}
+            <span className="font-medium text-dashboard-text-primary">
+              {data.percentage}%
+            </span>
+          </p>
+        </div>
+      </div>
+    );
+  }
+  return null;
+};
+
+// Custom tooltip for bar chart
+const BarTooltip = ({ active, payload, label }: any) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className="bg-white p-3 rounded-lg shadow-lg border border-gray-200">
+        <p className="font-medium text-dashboard-text-primary mb-2">{label}</p>
+        <div className="space-y-1">
+          {payload.map((entry: any, index: number) => (
+            <div
+              key={index}
+              className="flex items-center justify-between space-x-4"
+            >
+              <div className="flex items-center space-x-2">
+                <div
+                  className="w-3 h-3 rounded-full"
+                  style={{ backgroundColor: entry.color }}
+                />
+                <span className="text-sm text-dashboard-text-secondary">
+                  {entry.dataKey === "searches"
+                    ? "Total Searches"
+                    : entry.dataKey === "clicks"
+                      ? "Total Clicks"
+                      : "Added to Cart"}
+                  :
+                </span>
+              </div>
+              <span className="text-sm font-medium text-dashboard-text-primary">
+                {entry.value.toLocaleString()}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+  return null;
+};
 
 export function Charts() {
   return (
@@ -44,11 +118,31 @@ export function Charts() {
                 innerRadius={60}
                 outerRadius={90}
                 dataKey="value"
+                stroke="none"
+                style={{ cursor: "pointer" }}
               >
                 {donutData.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={entry.color} />
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={entry.color}
+                    style={{
+                      filter: "drop-shadow(0px 2px 4px rgba(0,0,0,0.1))",
+                      transition: "all 0.2s ease-in-out",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.target.style.filter =
+                        "drop-shadow(0px 4px 8px rgba(0,0,0,0.2))";
+                      e.target.style.transform = "scale(1.05)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.filter =
+                        "drop-shadow(0px 2px 4px rgba(0,0,0,0.1))";
+                      e.target.style.transform = "scale(1)";
+                    }}
+                  />
                 ))}
               </Pie>
+              <Tooltip content={<DonutTooltip />} />
             </PieChart>
           </ResponsiveContainer>
         </div>
@@ -105,7 +199,13 @@ export function Charts() {
           <BarChart
             data={barData}
             margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+            style={{ cursor: "pointer" }}
           >
+            <CartesianGrid
+              strokeDasharray="3 3"
+              stroke="#f0f0f0"
+              vertical={false}
+            />
             <XAxis
               dataKey="month"
               axisLine={false}
@@ -119,23 +219,78 @@ export function Charts() {
               domain={[0, 600]}
               ticks={[0, 200, 400, 600]}
             />
+            <Tooltip content={<BarTooltip />} />
             <Bar
               dataKey="searches"
               fill="#3B82F6"
               radius={[2, 2, 0, 0]}
               maxBarSize={20}
+              style={{
+                filter: "drop-shadow(0px 2px 4px rgba(59, 130, 246, 0.2))",
+                transition: "all 0.2s ease-in-out",
+              }}
+              onMouseEnter={(data, index, e) => {
+                if (e && e.target) {
+                  e.target.style.filter =
+                    "drop-shadow(0px 4px 8px rgba(59, 130, 246, 0.3))";
+                  e.target.style.transform = "scaleY(1.05)";
+                }
+              }}
+              onMouseLeave={(data, index, e) => {
+                if (e && e.target) {
+                  e.target.style.filter =
+                    "drop-shadow(0px 2px 4px rgba(59, 130, 246, 0.2))";
+                  e.target.style.transform = "scaleY(1)";
+                }
+              }}
             />
             <Bar
               dataKey="clicks"
               fill="#EF4444"
               radius={[2, 2, 0, 0]}
               maxBarSize={20}
+              style={{
+                filter: "drop-shadow(0px 2px 4px rgba(239, 68, 68, 0.2))",
+                transition: "all 0.2s ease-in-out",
+              }}
+              onMouseEnter={(data, index, e) => {
+                if (e && e.target) {
+                  e.target.style.filter =
+                    "drop-shadow(0px 4px 8px rgba(239, 68, 68, 0.3))";
+                  e.target.style.transform = "scaleY(1.05)";
+                }
+              }}
+              onMouseLeave={(data, index, e) => {
+                if (e && e.target) {
+                  e.target.style.filter =
+                    "drop-shadow(0px 2px 4px rgba(239, 68, 68, 0.2))";
+                  e.target.style.transform = "scaleY(1)";
+                }
+              }}
             />
             <Bar
               dataKey="cart"
               fill="#10B981"
               radius={[2, 2, 0, 0]}
               maxBarSize={20}
+              style={{
+                filter: "drop-shadow(0px 2px 4px rgba(16, 185, 129, 0.2))",
+                transition: "all 0.2s ease-in-out",
+              }}
+              onMouseEnter={(data, index, e) => {
+                if (e && e.target) {
+                  e.target.style.filter =
+                    "drop-shadow(0px 4px 8px rgba(16, 185, 129, 0.3))";
+                  e.target.style.transform = "scaleY(1.05)";
+                }
+              }}
+              onMouseLeave={(data, index, e) => {
+                if (e && e.target) {
+                  e.target.style.filter =
+                    "drop-shadow(0px 2px 4px rgba(16, 185, 129, 0.2))";
+                  e.target.style.transform = "scaleY(1)";
+                }
+              }}
             />
           </BarChart>
         </ResponsiveContainer>

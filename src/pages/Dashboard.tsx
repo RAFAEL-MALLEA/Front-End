@@ -65,9 +65,9 @@ export default function Dashboard() {
             <main className="flex-1 overflow-y-auto">
               <div className="p-3 sm:p-4 md:p-6 lg:p-8">
                 <div className="max-w-7xl mx-auto space-y-4 sm:space-y-6 lg:space-y-8">
-                  {/* Dashboard Title */}
-                  <div className="mb-6 sm:mb-8">
-                    <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-dashboard-text-primary mb-2 sm:mb-3">
+                  {/* Dashboard Title and Date Range */}
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 sm:mb-8 gap-3 sm:gap-4">
+                    <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-dashboard-text-primary">
                       Dashboard
                     </h1>
                     {/* Date Range */}

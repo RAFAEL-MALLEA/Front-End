@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, CalendarDays } from "lucide-react";
 import { Sidebar } from "@/components/dashboard/Sidebar";
 import { Header } from "@/components/dashboard/Header";
 import { KPICard } from "@/components/dashboard/KPICard";
@@ -67,9 +67,16 @@ export default function Dashboard() {
                 <div className="max-w-7xl mx-auto space-y-4 sm:space-y-6 lg:space-y-8">
                   {/* Dashboard Title */}
                   <div className="mb-6 sm:mb-8">
-                    <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-dashboard-text-primary">
+                    <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-dashboard-text-primary mb-2 sm:mb-3">
                       Dashboard
                     </h1>
+                    {/* Date Range */}
+                    <div className="flex items-center space-x-2 text-sm sm:text-base text-dashboard-text-secondary">
+                      <CalendarDays className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
+                      <span className="whitespace-nowrap">
+                        11 may 2022 - 3 june 2022
+                      </span>
+                    </div>
                   </div>
 
                   {/* KPI Cards */}

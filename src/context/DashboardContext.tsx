@@ -51,7 +51,7 @@ const sampleSearchData: SearchData[] = [
     id: "1",
     name: "Red Hat",
     quantity: 300,
-    clicks: 15000,
+    clicks: 10000,
     conversionRate: 9,
     totalSales: 2000000,
     category: "product",

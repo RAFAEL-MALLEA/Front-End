@@ -20,7 +20,7 @@ const navigation = [
     id: "dashboard",
     name: "Dashboard",
     icon: LayoutGrid,
-    current: true,
+    current: false,
     hasChevron: false,
   },
   {

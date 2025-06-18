@@ -34,12 +34,12 @@ export function Sidebar({ className }: SidebarProps) {
   return (
     <div
       className={cn(
-        "bg-white border-r border-gray-200 h-full flex flex-col shadow-lg md:shadow-none",
+        "bg-white h-full flex flex-col shadow-lg md:shadow-none",
         className,
       )}
     >
       {/* User Profile Section */}
-      <div className="border-b border-gray-200 flex-shrink-0">
+      <div className="p-3 sm:p-4 md:p-5 lg:p-6 flex-shrink-0">
         <div className="flex items-center space-x-2 sm:space-x-3">
           <Avatar
             src="https://cdn.builder.io/api/v1/assets/63813166d9a640a3ba53e42c83e92b26/07fd4b021b913b8a47a365bfef36598790a687fe-7aa66e"
@@ -58,13 +58,13 @@ export function Sidebar({ className }: SidebarProps) {
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 space-y-1 sm:space-y-2 overflow-y-auto">
+      <nav className="flex-1 px-3 sm:px-4 py-4 sm:py-6 space-y-1 sm:space-y-2 overflow-y-auto">
         {navigation.map((item) => (
           <a
             key={item.id}
             href="#"
             className={cn(
-              "flex items-center px-2 sm:px-3 py-2 sm:py-2.5 text-xs sm:text-sm font-medium transition-colors touch-manipulation",
+              "flex items-center px-2 sm:px-3 py-2 sm:py-2.5 text-xs sm:text-sm font-medium rounded-lg transition-colors touch-manipulation",
               item.current
                 ? "bg-sidebar text-white shadow-sm"
                 : "text-gray-600 hover:bg-gray-100 hover:text-gray-900 active:bg-gray-200",
@@ -77,7 +77,7 @@ export function Sidebar({ className }: SidebarProps) {
       </nav>
 
       {/* Logo */}
-      <div className="flex-shrink-0 border-t border-gray-100">
+      <div className="p-3 sm:p-4 md:p-5 lg:p-6 flex-shrink-0">
         <div className="flex items-center justify-center">
           <Logo
             src="https://cdn.builder.io/api/v1/assets/63813166d9a640a3ba53e42c83e92b26/696fce25d20f5d30fc42df786f80c40ee759aaf7-efc827"

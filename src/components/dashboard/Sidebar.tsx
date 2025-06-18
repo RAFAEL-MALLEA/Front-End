@@ -38,14 +38,20 @@ export function Sidebar({ className }: SidebarProps) {
       )}
     >
       {/* User Profile Section */}
-      <div className="p-6 border-b border-gray-200">
-        <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 bg-orange-400 rounded-full flex items-center justify-center text-white font-semibold text-sm">
-            SD
+      <div className="p-4 lg:p-6 border-b border-gray-200">
+        <div className="flex items-center space-x-2 lg:space-x-3">
+          <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full overflow-hidden ring-2 ring-gray-100 flex-shrink-0">
+            <img
+              src="https://cdn.builder.io/api/v1/assets/63813166d9a640a3ba53e42c83e92b26/07fd4b021b913b8a47a365bfef36598790a687fe-7aa66e?format=webp&width=800"
+              alt="Sophie Devine"
+              className="w-full h-full object-cover transition-transform hover:scale-105"
+            />
           </div>
-          <div>
-            <p className="text-gray-900 font-medium text-sm">Sophie Devine</p>
-            <p className="text-gray-500 text-xs">Admin</p>
+          <div className="min-w-0 flex-1">
+            <p className="text-gray-900 font-medium text-xs lg:text-sm truncate">
+              Sophie Devine
+            </p>
+            <p className="text-gray-500 text-xs truncate">Admin</p>
           </div>
         </div>
       </div>

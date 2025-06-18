@@ -13,8 +13,8 @@ import {
 
 // Data for the donut chart (STATIC - Total data)
 const donutData = [
-  { name: "Red Hat", value: 15000, color: "#EF4444", percentage: 42.9 },
-  { name: "Cricket bat", value: 20000, color: "#10B981", percentage: 57.1 },
+  { name: "Red Hat", value: 10000, color: "#EF4444", percentage: 33.3 },
+  { name: "Cricket bat", value: 20000, color: "#10B981", percentage: 66.7 },
 ];
 
 // Data for the bar chart (STATIC - Total data)

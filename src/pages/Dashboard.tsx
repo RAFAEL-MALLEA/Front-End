@@ -65,6 +65,13 @@ export default function Dashboard() {
             <main className="flex-1 overflow-y-auto">
               <div className="p-3 sm:p-4 md:p-6 lg:p-8">
                 <div className="max-w-7xl mx-auto space-y-4 sm:space-y-6 lg:space-y-8">
+                  {/* Dashboard Title */}
+                  <div className="mb-6 sm:mb-8">
+                    <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-dashboard-text-primary">
+                      Dashboard
+                    </h1>
+                  </div>
+
                   {/* KPI Cards */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
                     <KPICard

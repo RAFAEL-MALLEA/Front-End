@@ -13,13 +13,9 @@ export interface SearchData {
 
 export interface FilterState {
   searchName: string;
-  minQuantity: number;
   maxQuantity: number;
-  minClicks: number;
   maxClicks: number;
-  minConversionRate: number;
   maxConversionRate: number;
-  minTotalSales: number;
   maxTotalSales: number;
 }
 
@@ -155,13 +151,9 @@ const sampleSearchData: SearchData[] = [
 
 const initialFilters: FilterState = {
   searchName: "",
-  minQuantity: 0,
   maxQuantity: 1000,
-  minClicks: 0,
   maxClicks: 50000,
-  minConversionRate: 0,
   maxConversionRate: 20,
-  minTotalSales: 0,
   maxTotalSales: 5000000,
 };
 
@@ -172,13 +164,9 @@ export function DashboardProvider({ children }: { children: React.ReactNode }) {
     return sampleSearchData.filter((item) => {
       return (
         item.name.toLowerCase().includes(filters.searchName.toLowerCase()) &&
-        item.quantity >= filters.minQuantity &&
         item.quantity <= filters.maxQuantity &&
-        item.clicks >= filters.minClicks &&
         item.clicks <= filters.maxClicks &&
-        item.conversionRate >= filters.minConversionRate &&
         item.conversionRate <= filters.maxConversionRate &&
-        item.totalSales >= filters.minTotalSales &&
         item.totalSales <= filters.maxTotalSales
       );
     });

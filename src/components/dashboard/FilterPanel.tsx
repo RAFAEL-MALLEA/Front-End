@@ -68,154 +68,81 @@ export function FilterPanel() {
               </div>
             </div>
 
-            {/* Search Quantity Range */}
+            {/* Search Quantity Max */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Search Quantity
+                Max Search Quantity
               </label>
-              <div className="grid grid-cols-2 gap-2">
-                <div>
-                  <input
-                    type="number"
-                    value={filters.minQuantity}
-                    onChange={(e) =>
-                      updateFilter("minQuantity", Number(e.target.value))
-                    }
-                    placeholder="Min"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  />
-                  <span className="text-xs text-gray-500">
-                    Min: {filters.minQuantity}
-                  </span>
-                </div>
-                <div>
-                  <input
-                    type="number"
-                    value={filters.maxQuantity}
-                    onChange={(e) =>
-                      updateFilter("maxQuantity", Number(e.target.value))
-                    }
-                    placeholder="Max"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  />
-                  <span className="text-xs text-gray-500">
-                    Max: {filters.maxQuantity}
-                  </span>
-                </div>
-              </div>
+              <input
+                type="number"
+                value={filters.maxQuantity}
+                onChange={(e) =>
+                  updateFilter("maxQuantity", Number(e.target.value))
+                }
+                placeholder="Max Quantity"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              />
+              <span className="text-xs text-gray-500">
+                Max: {filters.maxQuantity}
+              </span>
             </div>
 
-            {/* Clicks Range */}
+            {/* Max Clicks */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Clicks Range
+                Max Clicks
               </label>
-              <div className="grid grid-cols-2 gap-2">
-                <div>
-                  <input
-                    type="number"
-                    value={filters.minClicks}
-                    onChange={(e) =>
-                      updateFilter("minClicks", Number(e.target.value))
-                    }
-                    placeholder="Min"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  />
-                  <span className="text-xs text-gray-500">
-                    Min: {filters.minClicks.toLocaleString()}
-                  </span>
-                </div>
-                <div>
-                  <input
-                    type="number"
-                    value={filters.maxClicks}
-                    onChange={(e) =>
-                      updateFilter("maxClicks", Number(e.target.value))
-                    }
-                    placeholder="Max"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  />
-                  <span className="text-xs text-gray-500">
-                    Max: {filters.maxClicks.toLocaleString()}
-                  </span>
-                </div>
-              </div>
+              <input
+                type="number"
+                value={filters.maxClicks}
+                onChange={(e) =>
+                  updateFilter("maxClicks", Number(e.target.value))
+                }
+                placeholder="Max Clicks"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              />
+              <span className="text-xs text-gray-500">
+                Max: {filters.maxClicks.toLocaleString()}
+              </span>
             </div>
 
-            {/* Conversion Rate Range */}
+            {/* Max Conversion Rate */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Conversion Rate (%)
+                Max Conversion Rate (%)
               </label>
-              <div className="grid grid-cols-2 gap-2">
-                <div>
-                  <input
-                    type="number"
-                    value={filters.minConversionRate}
-                    onChange={(e) =>
-                      updateFilter("minConversionRate", Number(e.target.value))
-                    }
-                    placeholder="Min %"
-                    step="0.1"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  />
-                  <span className="text-xs text-gray-500">
-                    Min: {filters.minConversionRate}%
-                  </span>
-                </div>
-                <div>
-                  <input
-                    type="number"
-                    value={filters.maxConversionRate}
-                    onChange={(e) =>
-                      updateFilter("maxConversionRate", Number(e.target.value))
-                    }
-                    placeholder="Max %"
-                    step="0.1"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  />
-                  <span className="text-xs text-gray-500">
-                    Max: {filters.maxConversionRate}%
-                  </span>
-                </div>
-              </div>
+              <input
+                type="number"
+                value={filters.maxConversionRate}
+                onChange={(e) =>
+                  updateFilter("maxConversionRate", Number(e.target.value))
+                }
+                placeholder="Max %"
+                step="0.1"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              />
+              <span className="text-xs text-gray-500">
+                Max: {filters.maxConversionRate}%
+              </span>
             </div>
 
-            {/* Total Sales Range */}
+            {/* Max Total Sales */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Total Sales ($)
+                Max Total Sales ($)
               </label>
-              <div className="grid grid-cols-2 gap-2">
-                <div>
-                  <input
-                    type="number"
-                    value={filters.minTotalSales}
-                    onChange={(e) =>
-                      updateFilter("minTotalSales", Number(e.target.value))
-                    }
-                    placeholder="Min $"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  />
-                  <span className="text-xs text-gray-500">
-                    Min: ${filters.minTotalSales.toLocaleString()}
-                  </span>
-                </div>
-                <div>
-                  <input
-                    type="number"
-                    value={filters.maxTotalSales}
-                    onChange={(e) =>
-                      updateFilter("maxTotalSales", Number(e.target.value))
-                    }
-                    placeholder="Max $"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  />
-                  <span className="text-xs text-gray-500">
-                    Max: ${filters.maxTotalSales.toLocaleString()}
-                  </span>
-                </div>
-              </div>
+              <input
+                type="number"
+                value={filters.maxTotalSales}
+                onChange={(e) =>
+                  updateFilter("maxTotalSales", Number(e.target.value))
+                }
+                placeholder="Max Sales"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              />
+              <span className="text-xs text-gray-500">
+                Max: ${filters.maxTotalSales.toLocaleString()}
+              </span>
             </div>
           </div>
 

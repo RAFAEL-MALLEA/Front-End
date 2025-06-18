@@ -11,7 +11,20 @@ import {
   CartesianGrid,
 } from "recharts";
 
-import { useDashboard } from "@/context/DashboardContext";
+// Data for the donut chart (STATIC - Total data)
+const donutData = [
+  { name: "Red Hat", value: 15000, color: "#EF4444", percentage: 42.9 },
+  { name: "Cricket bat", value: 20000, color: "#10B981", percentage: 57.1 },
+];
+
+// Data for the bar chart (STATIC - Total data)
+const barData = [
+  { month: "JAN", searches: 200, clicks: 250, cart: 180 },
+  { month: "FEB", searches: 280, clicks: 320, cart: 240 },
+  { month: "MAR", searches: 220, clicks: 280, cart: 200 },
+  { month: "APR", searches: 320, clicks: 450, cart: 380 },
+  { month: "MAY", searches: 380, clicks: 520, cart: 420 },
+];
 
 // Custom tooltip for donut chart
 const DonutTooltip = ({ active, payload }: any) => {
@@ -87,23 +100,13 @@ const BarTooltip = ({ active, payload, label }: any) => {
 };
 
 export function Charts() {
-  const { getChartData, filteredData } = useDashboard();
-  const { donutData, barData } = getChartData();
-
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
       {/* Donut Chart */}
       <div className="bg-white rounded-xl p-6 shadow-sm border border-dashboard-border">
-        <div className="flex items-center justify-between mb-6">
-          <h3 className="text-lg font-semibold text-dashboard-text-primary">
-            Top Clicked Products
-          </h3>
-          {filteredData.length > 0 && (
-            <span className="text-xs text-blue-600 bg-blue-50 px-2 py-1 rounded-full">
-              {filteredData.length} filtered
-            </span>
-          )}
-        </div>
+        <h3 className="text-lg font-semibold text-dashboard-text-primary mb-6">
+          Top 10 Clicked Product
+        </h3>
 
         <div className="flex items-center justify-center mb-6">
           <ResponsiveContainer width={200} height={200}>
@@ -165,16 +168,9 @@ export function Charts() {
       {/* Bar Chart */}
       <div className="bg-white rounded-xl p-6 shadow-sm border border-dashboard-border">
         <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center space-x-3">
-            <h3 className="text-lg font-semibold text-dashboard-text-primary">
-              Company Facts
-            </h3>
-            {filteredData.length > 0 && (
-              <span className="text-xs text-blue-600 bg-blue-50 px-2 py-1 rounded-full">
-                {filteredData.length} filtered
-              </span>
-            )}
-          </div>
+          <h3 className="text-lg font-semibold text-dashboard-text-primary">
+            Company Facts
+          </h3>
 
           {/* Legend */}
           <div className="flex space-x-4 text-xs">

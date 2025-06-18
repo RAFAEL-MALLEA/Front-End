@@ -1,11 +1,16 @@
-import { CalendarDays, User } from "lucide-react";
+import { Menu, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function Header() {
   return (
     <div className="bg-white">
       <div className="px-4 sm:px-6 lg:px-8 py-4 sm:py-5 lg:py-6">
-        <div className="flex justify-end">
+        <div className="flex items-center justify-between">
+          {/* Menu Icon */}
+          <Button variant="ghost" size="sm" className="p-1.5 h-auto">
+            <Menu className="w-5 h-5 text-gray-600" />
+          </Button>
+
           {/* Account Button */}
           <Button
             variant="outline"

@@ -31,16 +31,21 @@ const navigation = [
 
 export function Sidebar({ className }: SidebarProps) {
   return (
-    <div className={cn("w-64 bg-sidebar h-screen flex flex-col", className)}>
+    <div
+      className={cn(
+        "w-64 bg-white border-r border-gray-200 h-screen flex flex-col",
+        className,
+      )}
+    >
       {/* User Profile Section */}
-      <div className="p-6 border-b border-white/10">
+      <div className="p-6 border-b border-gray-200">
         <div className="flex items-center space-x-3">
           <div className="w-10 h-10 bg-orange-400 rounded-full flex items-center justify-center text-white font-semibold text-sm">
             SD
           </div>
           <div>
-            <p className="text-white font-medium text-sm">Sophie Devine</p>
-            <p className="text-white/70 text-xs">Admin</p>
+            <p className="text-gray-900 font-medium text-sm">Sophie Devine</p>
+            <p className="text-gray-500 text-xs">Admin</p>
           </div>
         </div>
       </div>
@@ -54,8 +59,8 @@ export function Sidebar({ className }: SidebarProps) {
             className={cn(
               "flex items-center px-3 py-2.5 text-sm font-medium rounded-lg transition-colors",
               item.current
-                ? "bg-white/10 text-white"
-                : "text-white/70 hover:bg-white/5 hover:text-white",
+                ? "bg-sidebar text-white"
+                : "text-gray-600 hover:bg-gray-100 hover:text-gray-900",
             )}
           >
             <item.icon className="w-4 h-4 mr-3" />
@@ -67,10 +72,10 @@ export function Sidebar({ className }: SidebarProps) {
       {/* Logo */}
       <div className="p-6">
         <div className="flex items-center space-x-2">
-          <div className="w-6 h-6 bg-white rounded-sm flex items-center justify-center">
-            <BarChart3 className="w-4 h-4 text-sidebar" />
+          <div className="w-6 h-6 bg-sidebar rounded-sm flex items-center justify-center">
+            <BarChart3 className="w-4 h-4 text-white" />
           </div>
-          <span className="text-white font-bold text-lg">Kalifind</span>
+          <span className="text-gray-900 font-bold text-lg">Kalifind</span>
         </div>
       </div>
     </div>

@@ -43,29 +43,34 @@ export function KPICard({
   return (
     <div
       className={cn(
-        "bg-white rounded-xl p-6 shadow-sm border border-dashboard-border",
+        "bg-white rounded-lg sm:rounded-xl p-4 sm:p-5 lg:p-6 shadow-sm border border-dashboard-border hover:shadow-md transition-shadow",
         className,
       )}
     >
       <div className="flex items-center justify-between">
-        <div>
-          <p className="text-dashboard-text-secondary text-sm font-medium mb-1">
+        {/* Content Section */}
+        <div className="flex-1 min-w-0 pr-3 sm:pr-4">
+          <p className="text-dashboard-text-secondary text-xs sm:text-sm font-medium mb-1 sm:mb-2 truncate">
             {title}
           </p>
-          <p className="text-2xl font-bold text-dashboard-text-primary">
+          <p className="text-lg sm:text-xl lg:text-2xl font-bold text-dashboard-text-primary truncate">
             {value}
           </p>
         </div>
 
-        <div className="relative w-20 h-20">
+        {/* Chart Section */}
+        <div className="relative w-16 h-16 sm:w-18 sm:h-18 lg:w-20 lg:h-20 flex-shrink-0">
           {/* Background circle */}
-          <svg className="w-20 h-20 transform -rotate-90" viewBox="0 0 80 80">
+          <svg
+            className="w-full h-full transform -rotate-90"
+            viewBox="0 0 80 80"
+          >
             <circle
               cx="40"
               cy="40"
               r={radius}
               stroke="#E5E7EB"
-              strokeWidth="6"
+              strokeWidth="5"
               fill="none"
             />
             {/* Progress circle */}
@@ -74,17 +79,19 @@ export function KPICard({
               cy="40"
               r={radius}
               stroke="currentColor"
-              strokeWidth="6"
+              strokeWidth="5"
               fill="none"
               strokeDasharray={strokeDasharray}
               strokeLinecap="round"
-              className={colors.ring}
+              className={cn(colors.ring, "transition-all duration-300")}
             />
           </svg>
 
           {/* Percentage text */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <span className={cn("text-sm font-semibold", colors.text)}>
+            <span
+              className={cn("text-xs sm:text-sm font-semibold", colors.text)}
+            >
               {percentage}%
             </span>
           </div>

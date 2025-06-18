@@ -12,69 +12,90 @@ export default function Dashboard() {
 
   return (
     <DashboardProvider>
-      <div className="flex h-screen bg-dashboard-bg">
+      <div className="min-h-screen bg-dashboard-bg">
         {/* Mobile sidebar backdrop */}
         {sidebarOpen && (
           <div
-            className="fixed inset-0 z-40 bg-black bg-opacity-25 lg:hidden"
+            className="fixed inset-0 z-40 bg-black bg-opacity-25 md:hidden"
             onClick={() => setSidebarOpen(false)}
           />
         )}
 
-        {/* Sidebar */}
-        <Sidebar
-          className={`
-        fixed lg:static lg:translate-x-0 z-50 transition-transform duration-300 ease-in-out
-        ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
-      `}
-        />
+        {/* Layout Container */}
+        <div className="flex h-screen">
+          {/* Sidebar */}
+          <Sidebar
+            className={`
+              fixed md:static inset-y-0 left-0 z-50
+              w-56 sm:w-64
+              transform transition-transform duration-300 ease-in-out
+              ${sidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}
+            `}
+          />
 
-        {/* Main Content */}
-        <div className="flex-1 flex flex-col overflow-hidden lg:ml-0">
-          {/* Mobile menu button */}
-          <div className="lg:hidden p-4 bg-white border-b border-dashboard-border">
-            <button
-              onClick={() => setSidebarOpen(!sidebarOpen)}
-              className="p-2 rounded-md text-dashboard-text-secondary hover:bg-gray-100"
-            >
-              {sidebarOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
-            </button>
-          </div>
-
-          {/* Header */}
-          <Header />
-
-          {/* Dashboard Content */}
-          <main className="flex-1 overflow-y-auto p-4 lg:p-8">
-            <div className="max-w-7xl mx-auto space-y-6 lg:space-y-8">
-              {/* KPI Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
-                <KPICard
-                  title="Total Search"
-                  value="50,000"
-                  percentage={67}
-                  color="red"
-                />
-                <KPICard title="CTR" value="50%" percentage={60} color="blue" />
-                <KPICard
-                  title="Total Sales"
-                  value="$9,000.00"
-                  percentage={85}
-                  color="green"
-                />
+          {/* Main Content */}
+          <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
+            {/* Mobile Header */}
+            <div className="md:hidden bg-white border-b border-dashboard-border">
+              <div className="flex items-center justify-between p-3 sm:p-4">
+                <button
+                  onClick={() => setSidebarOpen(!sidebarOpen)}
+                  className="p-2 rounded-md text-dashboard-text-secondary hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-sidebar"
+                  aria-label="Toggle sidebar"
+                >
+                  {sidebarOpen ? (
+                    <X className="w-5 h-5 sm:w-6 sm:h-6" />
+                  ) : (
+                    <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
+                  )}
+                </button>
+                <h1 className="text-lg sm:text-xl font-semibold text-dashboard-text-primary">
+                  Dashboard
+                </h1>
+                <div className="w-9 sm:w-10"></div> {/* Spacer for centering */}
               </div>
-
-              {/* Charts */}
-              <Charts />
-
-              {/* Search History Table */}
-              <SearchHistoryTable />
             </div>
-          </main>
+
+            {/* Desktop Header */}
+            <div className="hidden md:block">
+              <Header />
+            </div>
+
+            {/* Dashboard Content */}
+            <main className="flex-1 overflow-y-auto">
+              <div className="p-3 sm:p-4 md:p-6 lg:p-8">
+                <div className="max-w-7xl mx-auto space-y-4 sm:space-y-6 lg:space-y-8">
+                  {/* KPI Cards */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
+                    <KPICard
+                      title="Total Search"
+                      value="50,000"
+                      percentage={67}
+                      color="red"
+                    />
+                    <KPICard
+                      title="CTR"
+                      value="50%"
+                      percentage={60}
+                      color="blue"
+                    />
+                    <KPICard
+                      title="Total Sales"
+                      value="$9,000.00"
+                      percentage={85}
+                      color="green"
+                    />
+                  </div>
+
+                  {/* Charts */}
+                  <Charts />
+
+                  {/* Search History Table */}
+                  <SearchHistoryTable />
+                </div>
+              </div>
+            </main>
+          </div>
         </div>
       </div>
     </DashboardProvider>

@@ -33,22 +33,22 @@ export function Sidebar({ className }: SidebarProps) {
   return (
     <div
       className={cn(
-        "w-64 bg-white border-r border-gray-200 h-screen flex flex-col",
+        "bg-white border-r border-gray-200 h-full flex flex-col shadow-lg md:shadow-none",
         className,
       )}
     >
       {/* User Profile Section */}
-      <div className="p-4 lg:p-6 border-b border-gray-200">
-        <div className="flex items-center space-x-2 lg:space-x-3">
-          <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full overflow-hidden ring-2 ring-gray-100 flex-shrink-0">
+      <div className="p-3 sm:p-4 md:p-5 lg:p-6 border-b border-gray-200 flex-shrink-0">
+        <div className="flex items-center space-x-2 sm:space-x-3">
+          <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full overflow-hidden ring-2 ring-gray-100 flex-shrink-0">
             <img
-              src="https://cdn.builder.io/api/v1/assets/63813166d9a640a3ba53e42c83e92b26/07fd4b021b913b8a47a365bfef36598790a687fe-7aa66e?format=webp&width=800"
+              src="https://cdn.builder.io/api/v1/assets/63813166d9a640a3ba53e92b26/07fd4b021b913b8a47a365bfef36598790a687fe-7aa66e?format=webp&width=800"
               alt="Sophie Devine"
               className="w-full h-full object-cover transition-transform hover:scale-105"
             />
           </div>
           <div className="min-w-0 flex-1">
-            <p className="text-gray-900 font-medium text-xs lg:text-sm truncate">
+            <p className="text-gray-900 font-medium text-xs sm:text-sm md:text-sm truncate">
               Sophie Devine
             </p>
             <p className="text-gray-500 text-xs truncate">Admin</p>
@@ -57,31 +57,31 @@ export function Sidebar({ className }: SidebarProps) {
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 px-4 py-6 space-y-2">
+      <nav className="flex-1 px-3 sm:px-4 py-4 sm:py-6 space-y-1 sm:space-y-2 overflow-y-auto">
         {navigation.map((item) => (
           <a
             key={item.id}
             href="#"
             className={cn(
-              "flex items-center px-3 py-2.5 text-sm font-medium rounded-lg transition-colors",
+              "flex items-center px-2 sm:px-3 py-2 sm:py-2.5 text-xs sm:text-sm font-medium rounded-lg transition-colors touch-manipulation",
               item.current
-                ? "bg-sidebar text-white"
-                : "text-gray-600 hover:bg-gray-100 hover:text-gray-900",
+                ? "bg-sidebar text-white shadow-sm"
+                : "text-gray-600 hover:bg-gray-100 hover:text-gray-900 active:bg-gray-200",
             )}
           >
-            <item.icon className="w-4 h-4 mr-3" />
-            {item.name}
+            <item.icon className="w-4 h-4 sm:w-4 sm:h-4 mr-2 sm:mr-3 flex-shrink-0" />
+            <span className="truncate">{item.name}</span>
           </a>
         ))}
       </nav>
 
       {/* Logo */}
-      <div className="p-6">
+      <div className="p-3 sm:p-4 md:p-5 lg:p-6 flex-shrink-0 border-t border-gray-100">
         <div className="flex items-center justify-center">
           <img
-            src="https://cdn.builder.io/api/v1/assets/63813166d9a640a3ba53e42c83e92b26/696fce25d20f5d30fc42df786f80c40ee759aaf7-efc827?format=webp&width=800"
+            src="https://cdn.builder.io/api/v1/assets/63813166d9a640a3ba53e92b26/696fce25d20f5d30fc42df786f80c40ee759aaf7-efc827?format=webp&width=800"
             alt="Kalifind Logo"
-            className="h-8 w-auto max-w-full object-contain transition-opacity hover:opacity-90"
+            className="h-6 sm:h-7 md:h-8 w-auto max-w-full object-contain transition-opacity hover:opacity-90"
           />
         </div>
       </div>

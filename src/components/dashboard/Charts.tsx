@@ -101,104 +101,121 @@ const BarTooltip = ({ active, payload, label }: any) => {
 
 export function Charts() {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 sm:gap-6">
       {/* Donut Chart */}
-      <div className="bg-white rounded-xl p-6 shadow-sm border border-dashboard-border">
-        <h3 className="text-lg font-semibold text-dashboard-text-primary mb-6">
+      <div className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-5 lg:p-6 shadow-sm border border-dashboard-border">
+        <h3 className="text-base sm:text-lg font-semibold text-dashboard-text-primary mb-4 sm:mb-6">
           Top 10 Clicked Product
         </h3>
 
-        <div className="flex items-center justify-center mb-6">
-          <ResponsiveContainer width={200} height={200}>
-            <PieChart>
-              <Pie
-                data={donutData}
-                cx="50%"
-                cy="50%"
-                innerRadius={60}
-                outerRadius={90}
-                dataKey="value"
-                stroke="none"
-                style={{ cursor: "pointer" }}
-              >
-                {donutData.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={entry.color}
-                    style={{
-                      filter: "drop-shadow(0px 2px 4px rgba(0,0,0,0.1))",
-                      transition: "all 0.2s ease-in-out",
-                    }}
-                    onMouseEnter={(e) => {
-                      e.target.style.filter =
-                        "drop-shadow(0px 4px 8px rgba(0,0,0,0.2))";
-                      e.target.style.transform = "scale(1.05)";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.target.style.filter =
-                        "drop-shadow(0px 2px 4px rgba(0,0,0,0.1))";
-                      e.target.style.transform = "scale(1)";
-                    }}
-                  />
-                ))}
-              </Pie>
-              <Tooltip content={<DonutTooltip />} />
-            </PieChart>
-          </ResponsiveContainer>
-        </div>
+        <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+          {/* Chart Container */}
+          <div className="flex items-center justify-center flex-shrink-0">
+            <ResponsiveContainer
+              width={180}
+              height={180}
+              className="sm:w-48 sm:h-48"
+            >
+              <PieChart>
+                <Pie
+                  data={donutData}
+                  cx="50%"
+                  cy="50%"
+                  innerRadius={50}
+                  outerRadius={80}
+                  dataKey="value"
+                  stroke="none"
+                  style={{ cursor: "pointer" }}
+                >
+                  {donutData.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={entry.color}
+                      style={{
+                        filter: "drop-shadow(0px 2px 4px rgba(0,0,0,0.1))",
+                        transition: "all 0.2s ease-in-out",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.target.style.filter =
+                          "drop-shadow(0px 4px 8px rgba(0,0,0,0.2))";
+                        e.target.style.transform = "scale(1.05)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.target.style.filter =
+                          "drop-shadow(0px 2px 4px rgba(0,0,0,0.1))";
+                        e.target.style.transform = "scale(1)";
+                      }}
+                    />
+                  ))}
+                </Pie>
+                <Tooltip content={<DonutTooltip />} />
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
 
-        {/* Legend */}
-        <div className="space-y-3">
-          {donutData.map((item) => (
-            <div key={item.name} className="flex items-center justify-between">
-              <div className="flex items-center space-x-2">
-                <div
-                  className="w-3 h-3 rounded-full"
-                  style={{ backgroundColor: item.color }}
-                />
-                <span className="text-sm text-dashboard-text-secondary">
-                  {item.name}: {(item.value / 1000).toFixed(0)}k
+          {/* Legend */}
+          <div className="space-y-2 sm:space-y-3 flex-1">
+            {donutData.map((item) => (
+              <div
+                key={item.name}
+                className="flex items-center justify-between"
+              >
+                <div className="flex items-center space-x-2 min-w-0">
+                  <div
+                    className="w-3 h-3 rounded-full flex-shrink-0"
+                    style={{ backgroundColor: item.color }}
+                  />
+                  <span className="text-xs sm:text-sm text-dashboard-text-secondary truncate">
+                    {item.name}
+                  </span>
+                </div>
+                <span className="text-xs sm:text-sm font-medium text-dashboard-text-primary ml-2">
+                  {(item.value / 1000).toFixed(0)}k
                 </span>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Bar Chart */}
-      <div className="bg-white rounded-xl p-6 shadow-sm border border-dashboard-border">
-        <div className="flex items-center justify-between mb-6">
-          <h3 className="text-lg font-semibold text-dashboard-text-primary">
+      <div className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-5 lg:p-6 shadow-sm border border-dashboard-border">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 sm:mb-6 gap-3">
+          <h3 className="text-base sm:text-lg font-semibold text-dashboard-text-primary">
             Company Facts
           </h3>
 
           {/* Legend */}
-          <div className="flex space-x-4 text-xs">
+          <div className="flex flex-wrap gap-2 sm:gap-4 text-xs">
             <div className="flex items-center space-x-1">
-              <div className="w-3 h-3 bg-dashboard-accent-blue rounded-full" />
-              <span className="text-dashboard-text-secondary">
+              <div className="w-2 h-2 sm:w-3 sm:h-3 bg-dashboard-accent-blue rounded-full" />
+              <span className="text-dashboard-text-secondary whitespace-nowrap">
                 Total Searches
               </span>
             </div>
             <div className="flex items-center space-x-1">
-              <div className="w-3 h-3 bg-dashboard-accent-red rounded-full" />
-              <span className="text-dashboard-text-secondary">
+              <div className="w-2 h-2 sm:w-3 sm:h-3 bg-dashboard-accent-red rounded-full" />
+              <span className="text-dashboard-text-secondary whitespace-nowrap">
                 Total Clicks
               </span>
             </div>
             <div className="flex items-center space-x-1">
-              <div className="w-3 h-3 bg-dashboard-accent-green rounded-full" />
-              <span className="text-dashboard-text-secondary">
+              <div className="w-2 h-2 sm:w-3 sm:h-3 bg-dashboard-accent-green rounded-full" />
+              <span className="text-dashboard-text-secondary whitespace-nowrap">
                 Added to cart
               </span>
             </div>
           </div>
         </div>
 
-        <ResponsiveContainer width="100%" height={250}>
+        <ResponsiveContainer
+          width="100%"
+          height={200}
+          className="sm:h-60 lg:h-64"
+        >
           <BarChart
             data={barData}
-            margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+            margin={{ top: 10, right: 10, left: 5, bottom: 5 }}
             style={{ cursor: "pointer" }}
           >
             <CartesianGrid
@@ -210,87 +227,38 @@ export function Charts() {
               dataKey="month"
               axisLine={false}
               tickLine={false}
-              tick={{ fontSize: 12, fill: "#6B7280" }}
+              tick={{ fontSize: 10, fill: "#6B7280" }}
+              className="sm:text-xs"
             />
             <YAxis
               axisLine={false}
               tickLine={false}
-              tick={{ fontSize: 12, fill: "#6B7280" }}
+              tick={{ fontSize: 10, fill: "#6B7280" }}
               domain={[0, 600]}
               ticks={[0, 200, 400, 600]}
+              className="sm:text-xs"
             />
             <Tooltip content={<BarTooltip />} />
             <Bar
               dataKey="searches"
               fill="#3B82F6"
-              radius={[2, 2, 0, 0]}
-              maxBarSize={20}
-              style={{
-                filter: "drop-shadow(0px 2px 4px rgba(59, 130, 246, 0.2))",
-                transition: "all 0.2s ease-in-out",
-              }}
-              onMouseEnter={(data, index, e) => {
-                if (e && e.target) {
-                  e.target.style.filter =
-                    "drop-shadow(0px 4px 8px rgba(59, 130, 246, 0.3))";
-                  e.target.style.transform = "scaleY(1.05)";
-                }
-              }}
-              onMouseLeave={(data, index, e) => {
-                if (e && e.target) {
-                  e.target.style.filter =
-                    "drop-shadow(0px 2px 4px rgba(59, 130, 246, 0.2))";
-                  e.target.style.transform = "scaleY(1)";
-                }
-              }}
+              radius={[1, 1, 0, 0]}
+              maxBarSize={16}
+              className="sm:max-w-5"
             />
             <Bar
               dataKey="clicks"
               fill="#EF4444"
-              radius={[2, 2, 0, 0]}
-              maxBarSize={20}
-              style={{
-                filter: "drop-shadow(0px 2px 4px rgba(239, 68, 68, 0.2))",
-                transition: "all 0.2s ease-in-out",
-              }}
-              onMouseEnter={(data, index, e) => {
-                if (e && e.target) {
-                  e.target.style.filter =
-                    "drop-shadow(0px 4px 8px rgba(239, 68, 68, 0.3))";
-                  e.target.style.transform = "scaleY(1.05)";
-                }
-              }}
-              onMouseLeave={(data, index, e) => {
-                if (e && e.target) {
-                  e.target.style.filter =
-                    "drop-shadow(0px 2px 4px rgba(239, 68, 68, 0.2))";
-                  e.target.style.transform = "scaleY(1)";
-                }
-              }}
+              radius={[1, 1, 0, 0]}
+              maxBarSize={16}
+              className="sm:max-w-5"
             />
             <Bar
               dataKey="cart"
               fill="#10B981"
-              radius={[2, 2, 0, 0]}
-              maxBarSize={20}
-              style={{
-                filter: "drop-shadow(0px 2px 4px rgba(16, 185, 129, 0.2))",
-                transition: "all 0.2s ease-in-out",
-              }}
-              onMouseEnter={(data, index, e) => {
-                if (e && e.target) {
-                  e.target.style.filter =
-                    "drop-shadow(0px 4px 8px rgba(16, 185, 129, 0.3))";
-                  e.target.style.transform = "scaleY(1.05)";
-                }
-              }}
-              onMouseLeave={(data, index, e) => {
-                if (e && e.target) {
-                  e.target.style.filter =
-                    "drop-shadow(0px 2px 4px rgba(16, 185, 129, 0.2))";
-                  e.target.style.transform = "scaleY(1)";
-                }
-              }}
+              radius={[1, 1, 0, 0]}
+              maxBarSize={16}
+              className="sm:max-w-5"
             />
           </BarChart>
         </ResponsiveContainer>

@@ -1,12 +1,12 @@
 import {
-  BarChart3,
-  ShoppingCart,
-  Search,
+  LayoutGrid,
+  ShoppingBag,
+  FileText,
   Filter,
-  Activity,
-  Zap,
+  BarChart3,
+  FileCheck,
   Settings,
-  Home,
+  ChevronRight,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Avatar, Logo } from "@/components/ui/ResponsiveImage";
@@ -16,18 +16,62 @@ interface SidebarProps {
 }
 
 const navigation = [
-  { id: "dashboard", name: "Dashboard", icon: Home, current: true },
+  {
+    id: "dashboard",
+    name: "Dashboard",
+    icon: LayoutGrid,
+    current: true,
+    hasChevron: false,
+  },
   {
     id: "ecommerce",
     name: "My E-commerce",
-    icon: ShoppingCart,
+    icon: ShoppingBag,
     current: false,
+    hasChevron: false,
   },
-  { id: "search-lab", name: "Search Lab", icon: Search, current: false },
-  { id: "filter-state", name: "Filter State", icon: Filter, current: false },
-  { id: "real-time", name: "Real Time State", icon: Activity, current: false },
-  { id: "boosting", name: "Boosting Rules", icon: Zap, current: false },
-  { id: "setting", name: "Setting", icon: Settings, current: false },
+  {
+    id: "search-lab-1",
+    name: "Search Lab",
+    icon: FileText,
+    current: false,
+    hasChevron: false,
+  },
+  {
+    id: "search-lab-2",
+    name: "Search Lab",
+    icon: FileText,
+    current: false,
+    hasChevron: false,
+  },
+  {
+    id: "filter-state",
+    name: "Filter State",
+    icon: Filter,
+    current: false,
+    hasChevron: false,
+  },
+  {
+    id: "real-time",
+    name: "Real Time State",
+    icon: BarChart3,
+    current: false,
+    hasChevron: false,
+  },
+  {
+    id: "boosting",
+    name: "Boosting Rules",
+    icon: FileCheck,
+    current: false,
+    hasChevron: true,
+  },
+  {
+    id: "setting",
+    name: "Setting",
+    icon: Settings,
+    current: false,
+    hasChevron: true,
+  },
 ];
 
 export function Sidebar({ className }: SidebarProps) {
@@ -64,14 +108,19 @@ export function Sidebar({ className }: SidebarProps) {
             key={item.id}
             href="#"
             className={cn(
-              "flex items-center px-2 sm:px-3 py-2 sm:py-2.5 text-xs sm:text-sm font-medium rounded-lg transition-colors touch-manipulation",
+              "flex items-center justify-between px-2 sm:px-3 py-2 sm:py-2.5 text-xs sm:text-sm font-medium rounded-lg transition-all duration-200 touch-manipulation group",
               item.current
                 ? "bg-sidebar text-white shadow-sm"
-                : "text-gray-600 hover:bg-gray-100 hover:text-gray-900 active:bg-gray-200",
+                : "text-gray-600 hover:bg-gray-50 hover:text-gray-900 active:bg-gray-100",
             )}
           >
-            <item.icon className="w-4 h-4 sm:w-4 sm:h-4 mr-2 sm:mr-3 flex-shrink-0" />
-            <span className="truncate">{item.name}</span>
+            <div className="flex items-center">
+              <item.icon className="w-4 h-4 sm:w-4 sm:h-4 mr-2 sm:mr-3 flex-shrink-0" />
+              <span className="truncate">{item.name}</span>
+            </div>
+            {item.hasChevron && (
+              <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0 text-gray-400 group-hover:text-gray-600 transition-colors" />
+            )}
           </a>
         ))}
       </nav>

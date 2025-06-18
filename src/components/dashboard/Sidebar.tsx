@@ -71,11 +71,12 @@ export function Sidebar({ className }: SidebarProps) {
 
       {/* Logo */}
       <div className="p-6">
-        <div className="flex items-center space-x-2">
-          <div className="w-6 h-6 bg-sidebar rounded-sm flex items-center justify-center">
-            <BarChart3 className="w-4 h-4 text-white" />
-          </div>
-          <span className="text-gray-900 font-bold text-lg">Kalifind</span>
+        <div className="flex items-center justify-center">
+          <img
+            src="https://cdn.builder.io/api/v1/assets/63813166d9a640a3ba53e42c83e92b26/696fce25d20f5d30fc42df786f80c40ee759aaf7-efc827?format=webp&width=800"
+            alt="Kalifind Logo"
+            className="h-8 w-auto max-w-full object-contain transition-opacity hover:opacity-90"
+          />
         </div>
       </div>
     </div>

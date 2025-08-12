@@ -80,32 +80,19 @@ export default function Dashboard() {
                   </div>
 
                   {/* KPI Cards */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
-                    <KPICard
-                      title="Total Search"
-                      value="50,000"
-                      percentage={67}
-                      color="red"
-                    />
-                    <KPICard
-                      title="CTR"
-                      value="50%"
-                      percentage={60}
-                      color="blue"
-                    />
-                    <KPICard
-                      title="Total Sales"
-                      value="$9,000.00"
-                      percentage={85}
-                      color="green"
-                    />
+                  <div className="bg-[#2196F3] gap-10 ">
+                  <div className="bg-[#2196F3] gap-10 ">1</div>
+                  <div className="bg-[#2196F3]  gap-10 ">2</div>
+                  <div className="bg-[#2196F3] gap-10 ">3</div>
+                  <div className="bg-[#2196F3]"></div>
+                  <div className="bg-[#2196F3]"></div>
+                  <div className="bg-[#2196F3]"></div>
+                  <div className="bg-[#2196F3]"></div>
+                  <div className="bg-[#2196F3]"></div>
+                  <div className="bg-[#2196F3]"></div>
                   </div>
-
                   {/* Charts */}
                   <Charts />
-
-                  {/* Search History Table */}
-                  <SearchHistoryTable />
                 </div>
               </div>
             </main>

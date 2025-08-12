@@ -1,10 +1,9 @@
+import { Link, useLocation } from "react-router-dom";
 import {
   LayoutGrid,
   ShoppingBag,
-  FileText,
-  Filter,
-  BarChart3,
-  FileCheck,
+  Users,
+  Upload,
   Settings,
   ChevronRight,
 } from "lucide-react";
@@ -16,125 +15,70 @@ interface SidebarProps {
 }
 
 const navigation = [
-  {
-    id: "dashboard",
-    name: "Dashboard",
-    icon: LayoutGrid,
-    current: false,
-    hasChevron: false,
-  },
-  {
-    id: "ecommerce",
-    name: "My E-commerce",
-    icon: ShoppingBag,
-    current: false,
-    hasChevron: false,
-  },
-  {
-    id: "search-lab-1",
-    name: "Search Lab",
-    icon: FileText,
-    current: false,
-    hasChevron: false,
-  },
-  {
-    id: "search-lab-2",
-    name: "Search Lab",
-    icon: FileText,
-    current: false,
-    hasChevron: false,
-  },
-  {
-    id: "filter-state",
-    name: "Filter State",
-    icon: Filter,
-    current: false,
-    hasChevron: false,
-  },
-  {
-    id: "real-time",
-    name: "Real Time State",
-    icon: BarChart3,
-    current: false,
-    hasChevron: false,
-  },
-  {
-    id: "boosting",
-    name: "Boosting Rules",
-    icon: FileCheck,
-    current: false,
-    hasChevron: true,
-  },
-  {
-    id: "setting",
-    name: "Setting",
-    icon: Settings,
-    current: false,
-    hasChevron: true,
-  },
+  { id: "Dashboard", name: "Metrics", icon: LayoutGrid, hasChevron: false },
+  { id: "reports", name: "Reports", icon: ShoppingBag, hasChevron: false },
+  { id: "users", name: "Users", icon: Users, hasChevron: false },
+  { id: "importar", name: "Import", icon: Upload, hasChevron: false }, // aquí clave 'importar'
+  { id: "Configuracion", name: "Configuration", icon: Settings, hasChevron: false },
 ];
 
+
 export function Sidebar({ className }: SidebarProps) {
+  const location = useLocation();
+
   return (
-    <div
-      className={cn(
-        "bg-white h-full flex flex-col shadow-lg md:shadow-none",
-        className,
-      )}
-    >
+    <div className={cn("bg-[#111827]", className)}>
       {/* User Profile Section */}
-      <div className="p-3 sm:p-4 md:p-5 lg:p-6 flex-shrink-0">
-        <div className="flex items-center space-x-2 sm:space-x-3">
+      <div className="p-4 flex-shrink-0">
+        <div className="flex items-center space-x-3">
           <Avatar
-            src="https://cdn.builder.io/api/v1/assets/63813166d9a640a3ba53e42c83e92b26/07fd4b021b913b8a47a365bfef36598790a687fe-7aa66e"
-            alt="Sophie Devine Profile Picture"
+            src="/public/empresas/JL_CAPANA/jl_capana.jpg"
+            alt="empresas"
             size="md"
             initials="SD"
             className="hover:scale-105 transition-transform duration-300"
           />
           <div className="min-w-0 flex-1">
-            <p className="text-gray-900 font-medium text-xs sm:text-sm md:text-sm truncate">
-              Sophie Devine
+            <p className="text-white font-medium text-sm truncate">
+              JL CAPANNA
             </p>
-            <p className="text-gray-500 text-xs truncate">Admin</p>
           </div>
         </div>
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 px-3 sm:px-4 py-4 sm:py-6 space-y-1 sm:space-y-2 overflow-y-auto">
-        {navigation.map((item) => (
-          <a
-            key={item.id}
-            href="#"
-            className={cn(
-              "flex items-center justify-between px-2 sm:px-3 py-2 sm:py-2.5 text-xs sm:text-sm font-medium rounded-lg transition-all duration-200 touch-manipulation group",
-              item.current
-                ? "bg-sidebar text-white shadow-sm"
-                : "text-gray-600 hover:bg-gray-50 hover:text-gray-900 active:bg-gray-100",
-            )}
-          >
-            <div className="flex items-center">
-              <item.icon className="w-4 h-4 sm:w-4 sm:h-4 mr-2 sm:mr-3 flex-shrink-0" />
-              <span className="truncate">{item.name}</span>
-            </div>
-            {item.hasChevron && (
-              <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0 text-gray-400 group-hover:text-gray-600 transition-colors" />
-            )}
-          </a>
-        ))}
+      <nav className="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
+        {navigation.map((item) => {
+          const path = `/${item.id}`;
+          const isActive = location.pathname === path;
+
+          return (
+            <Link
+              key={item.id}
+              to={path}
+              aria-current={isActive ? "page" : undefined}
+              className={cn(
+                "flex items-center justify-between px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 group",
+                isActive
+                  ? "bg-sidebar text-white shadow-sm"
+                  : "text-gray-400 hover:bg-gray-700 hover:text-white active:bg-gray-600"
+              )}
+            >
+              <div className="flex items-center">
+                <item.icon className="w-4 h-4 mr-3 flex-shrink-0" />
+                <span className="truncate">{item.name}</span>
+              </div>
+              {item.hasChevron && (
+                <ChevronRight className="w-4 h-4 flex-shrink-0 text-gray-400 group-hover:text-gray-200 transition-colors" />
+              )}
+            </Link>
+          );
+        })}
       </nav>
 
       {/* Logo */}
-      <div className="p-3 sm:p-4 md:p-5 lg:p-6 flex-shrink-0">
-        <div className="flex items-center justify-center">
-          <Logo
-            src="https://cdn.builder.io/api/v1/assets/63813166d9a640a3ba53e42c83e92b26/696fce25d20f5d30fc42df786f80c40ee759aaf7-efc827"
-            alt="Kalifind - Vendor Analytics Platform"
-            fallbackText="Kalifind"
-            className="hover:opacity-90 transition-opacity duration-300"
-          />
-        </div>
+      <div className="p-4 flex-shrink-0">
+
       </div>
     </div>
   );

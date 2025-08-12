@@ -24,6 +24,7 @@ const colorClasses = {
     bg: "bg-green-50",
     text: "text-dashboard-accent-green",
   },
+
 };
 
 export function KPICard({

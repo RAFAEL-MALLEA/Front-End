@@ -4,13 +4,14 @@ import Inicio from "./pages/Inicio";
 import NotFound from "./pages/NotFound";
 import Importar from "./pages/Importar";
 import Configuracion from "./pages/Configuracion";
-import "./App.css";
+import Login from "./pages/Login";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Inicio />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/Inicio" element={<Inicio />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/Importar" element={<Importar />} />
         <Route path="/Configuracion" element={<Configuracion />} />

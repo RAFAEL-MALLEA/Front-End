@@ -38,6 +38,7 @@ export default function Dashboard() {
 
             {/* Dashboard Content */}
             <main className="flex-1 overflow-y-auto">
+              {/* contenedor que contiene los recuadros de las empresas */}
               <div className="p-3 sm:p-4 md:p-6 lg:p-8">
                 <div className="max-w-7xl mx-auto space-y-4 sm:space-y-6 lg:space-y-8">
 

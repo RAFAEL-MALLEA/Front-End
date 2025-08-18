@@ -15,11 +15,11 @@ interface SidebarProps {
 }
 
 const navigation = [
-  { id: "Dashboard", name: "Metrics", icon: LayoutGrid, hasChevron: false },
-  { id: "reports", name: "Reports", icon: ShoppingBag, hasChevron: false },
-  { id: "users2", name: "Users", icon: Users, hasChevron: false },
-  { id: "importar", name: "Import", icon: Upload, hasChevron: false }, // aquí clave 'importar'
-  { id: "Configuracion", name: "Configuration", icon: Settings, hasChevron: false },
+   { id: "Inicio", name: "Metrics", icon: LayoutGrid, hasChevron: false },
+  // { id: "reports", name: "Reports", icon: ShoppingBag, hasChevron: false },
+   { id: "users", name: "Users", icon: Users, hasChevron: false },
+  // { id: "importar", name: "Import", icon: Upload, hasChevron: false }, // aquí clave 'importar'
+  // { id: "Configuracion", name: "Configuration", icon: Settings, hasChevron: false },
 ];
 
 

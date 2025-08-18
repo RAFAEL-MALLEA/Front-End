@@ -10,6 +10,19 @@ import { DashboardProvider } from "@/context/DashboardContext";
 export default function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
+  const Metrics = [
+    { id: 1, cantidad: "cantidad  en numero", cantidad2: "cantidad  en numero", cantidad3: "cantidad " },
+    { id: 2, cantidad: "cantidad  en numero", cantidad2: "cantidad  en numero", cantidad3: "cantidad " },
+    { id: 3, cantidad: "cantidad  en numero", cantidad2: "cantidad  en numero", cantidad3: "cantidad " },
+    { id: 4, cantidad: "cantidad  en numero", cantidad2: "cantidad  en numero", cantidad3: "cantidad " },
+    { id: 5, cantidad: "cantidad  en numero", cantidad2: "cantidad  en numero", cantidad3: "cantidad " },
+    { id: 6, cantidad: "cantidad  en numero", cantidad2: "cantidad  en numero", cantidad3: "cantidad " },
+    { id: 7, cantidad: "cantidad  en numero", cantidad2: "cantidad  en numero", cantidad3: "cantidad " },
+    { id: 8, cantidad: "cantidad  en numero", cantidad2: "cantidad  en numero", cantidad3: "cantidad " },
+    { id: 9, cantidad: "cantidad  en numero", cantidad2: "cantidad  en numero", cantidad3: "cantidad " }
+  ]
+
+
   return (
     <DashboardProvider>
       <div className="min-h-screen bg-dashboard-bg">
@@ -80,17 +93,25 @@ export default function Dashboard() {
                   </div>
 
                   {/* KPI Cards */}
-                  <div className="bg-[#2196F3] gap-10 ">
-                  <div className="bg-[#2196F3] gap-10 ">1</div>
-                  <div className="bg-[#2196F3]  gap-10 ">2</div>
-                  <div className="bg-[#2196F3] gap-10 ">3</div>
-                  <div className="bg-[#2196F3]"></div>
-                  <div className="bg-[#2196F3]"></div>
-                  <div className="bg-[#2196F3]"></div>
-                  <div className="bg-[#2196F3]"></div>
-                  <div className="bg-[#2196F3]"></div>
-                  <div className="bg-[#2196F3]"></div>
-                  </div>
+                {/* Cards donde se muestran los cantidads de las empresas */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
+                  {Metrics.map((Metrics) => (
+                    <div
+                      key={Metrics.id}
+                      className="bg-gradient-to-br from-gray-800 via-gray-900 to-black shadow-lg rounded-xl p-6 text-center text-white grid place-items-center transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                      title={Metrics.cantidad}
+                    >
+                      <div className="flex gap-2 justify-between items-center mb-4">
+                        <div className="grid gap-2">
+                      <span className="font-semibold text-lg">{Metrics.cantidad}</span>
+                      <span className="font-semibold text-lg">{Metrics.cantidad2}</span>
+                        </div>
+                      
+                      <span className="font-semibold text-lg">{Metrics.cantidad3}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
                   {/* Charts */}
                   <Charts />
                 </div>

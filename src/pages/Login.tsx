@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { DashboardProvider } from "@/context/DashboardContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [theme, setTheme] = useState("light");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   // Cargar tema desde localStorage
   useEffect(() => {
@@ -12,7 +16,7 @@ export default function Login() {
     document.documentElement.classList.toggle("dark", savedTheme === "dark");
   }, []);
 
-  // Cambiar tema y guardar en localStorage
+  // Cambiar tema
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
@@ -20,9 +24,19 @@ export default function Login() {
     localStorage.setItem("theme", newTheme);
   };
 
+  // Manejo de submit
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+
+    // TODO: aquí debe validar credenciales contra el backend
+    setTimeout(() => {
+      setLoading(false);
+      navigate("/inicio"); // redirige a inicio.tsx
+    }, 800);
+  };
+
   return (
-    
-    <DashboardProvider>
     <div className="flex flex-col md:flex-row h-screen bg-white dark:bg-gray-900">
       {/* Formulario */}
       <motion.div
@@ -41,10 +55,14 @@ export default function Login() {
           </button>
         </div>
 
-        <form className="w-full max-w-sm space-y-6">
+        <form onSubmit={handleSubmit} className="w-full max-w-sm space-y-6">
           {/* Logo */}
           <div className="text-center mb-8">
-            <img src="/fulllogo.png" alt="Logo Inventaria" className="mx-auto h-12" />
+            <img
+              src="/fulllogo.png"
+              alt="Logo Inventaria"
+              className="mx-auto h-12"
+            />
           </div>
 
           {/* Email */}
@@ -58,6 +76,10 @@ export default function Login() {
             <input
               type="email"
               id="email"
+              required
+              autoComplete="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               placeholder="usuario@ejemplo.com"
             />
@@ -74,24 +96,31 @@ export default function Login() {
             <input
               type="password"
               id="password"
+              required
+              autoComplete="current-password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               placeholder="••••••••"
             />
           </div>
 
           {/* Botón */}
-          <a href="/Inicio">
           <button
             type="submit"
-            className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 transition-colors"
+            disabled={loading}
+            className={`w-full py-2 px-4 rounded-md transition-colors ${
+              loading
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white"
+            }`}
           >
-            Iniciar
+            {loading ? "Iniciando..." : "Iniciar"}
           </button>
-          </a>
         </form>
       </motion.div>
 
-      {/* Imagen */}
+      {/* Imagen derecha */}
       <motion.div
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
@@ -116,6 +145,5 @@ export default function Login() {
         </div>
       </motion.div>
     </div>
-    </DashboardProvider>
   );
 }

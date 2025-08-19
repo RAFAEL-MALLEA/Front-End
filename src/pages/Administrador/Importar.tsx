@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Menu, X, CalendarDays } from "lucide-react";
-import { Sidebar } from "@/components/dashboard/Sidebar";
-import { Header } from "@/components/dashboard/Header";
-import { KPICard } from "@/components/dashboard/KPICard";
-import { Charts } from "@/components/dashboard/Charts";
-import { SearchHistoryTable } from "@/components/dashboard/SearchHistoryTable";
+import { Sidebar } from "@/components/Administrador/dashboard/Sidebar";
+import { Header } from "@/components/Administrador/dashboard/Header";
+import { KPICard } from "@/components/Administrador/dashboard/KPICard";
+import { Charts } from "@/components/Administrador/dashboard/Charts";
+import { SearchHistoryTable } from "@/components/Administrador/dashboard/SearchHistoryTable";
 import { DashboardProvider } from "@/context/DashboardContext";
 
 import Card from '@mui/material/Card';

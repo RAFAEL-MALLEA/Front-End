@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Sidebar } from "@/components/Inicio//inicio2/Sidebar2";
-import { Header } from "@/components/Inicio/inicio2/Header2";
+import { Sidebar } from "@/components/Administrador/dashboard/Sidebar";
+import { Header } from "@/components/Administrador/dashboard/Header";
 import { DashboardProvider } from "@/context/DashboardContext";
 
-export default function Dashboard() {
+export default function Users2() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Lista de empresas

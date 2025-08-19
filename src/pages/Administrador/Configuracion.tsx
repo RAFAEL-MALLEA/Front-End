@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { CalendarDays } from "lucide-react";
-import { Sidebar } from "@/components/dashboard/Sidebar";
-import { Header } from "@/components/dashboard/Header";
+import { Sidebar } from "@/components/Administrador/dashboard/Sidebar";
+import { Header } from "@/components/Administrador/dashboard/Header";
 import { DashboardProvider } from "@/context/DashboardContext";
 import { motion } from "framer-motion";
 

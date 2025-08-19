@@ -111,7 +111,7 @@ export function Charts() {
     <div className="grid grid-cols-1 xl:grid-cols-1 gap-4 sm:gap-6">
 
 
-      {/* Bar Chart */}
+      {/* CLASIFICACION POR ABC */}
       <div className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-5 lg:p-6 shadow-sm border border-dashboard-border">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 sm:mb-6 gap-3">
           <h3 className="text-base sm:text-lg font-semibold text-dashboard-text-primary">
@@ -196,6 +196,7 @@ export function Charts() {
           </BarChart>
         </ResponsiveContainer>
       </div>
+      
     </div>
   );
 }

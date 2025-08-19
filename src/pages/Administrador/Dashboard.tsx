@@ -6,6 +6,7 @@ import { KPICard } from "@/components/Administrador/dashboard/KPICard";
 import { Charts } from "@/components/Administrador/dashboard/Charts";
 import { SearchHistoryTable } from "@/components/Administrador/dashboard/SearchHistoryTable";
 import { DashboardProvider } from "@/context/DashboardContext";
+import { text } from "stream/consumers";
 
 export default function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -98,17 +99,18 @@ export default function Dashboard() {
                   {Metrics.map((Metrics) => (
                     <div
                       key={Metrics.id}
-                      className="bg-gradient-to-br from-gray-800 via-gray-900 to-black shadow-lg rounded-xl p-6 text-center text-white grid place-items-center transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                      className="bg-gradient-to-br from-gray-800 via-gray-900 to-black  rounded-xl  text-center text-white grid place-items-center transform duration-300 hover:scale-105 grid-cols-2 shadow-lg p-4 sm:p-6 lg:p-3"
                       title={Metrics.cantidad}
                     >
-                      <div className="flex gap-2 justify-between items-center mb-4">
-                        <div className="grid gap-2">
+                      <div className="flex gap-2">
+                        <div className="grid grid-cols-2">Cantidad metricas:
                       <span className="font-semibold text-lg">{Metrics.cantidad}</span>
+                      Cantidad metricas 2:
                       <span className="font-semibold text-lg">{Metrics.cantidad2}</span>
                         </div>
-                      
-                      <span className="font-semibold text-lg">{Metrics.cantidad3}</span>
                       </div>
+                      <span className="font-semibold text-lg">{Metrics.cantidad3}</span>
+                      
                     </div>
                   ))}
                 </div>

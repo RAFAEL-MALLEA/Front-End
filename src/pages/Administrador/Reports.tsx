@@ -52,25 +52,7 @@ export default function Dashboard() {
           {/* Main Content */}
           <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
             {/* Mobile Header */}
-            <div className="md:hidden bg-white border-b border-dashboard-border">
-              <div className="flex items-center justify-between p-3 sm:p-4">
-                <button
-                  onClick={() => setSidebarOpen(!sidebarOpen)}
-                  className="p-2 rounded-md text-dashboard-text-secondary hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-sidebar"
-                  aria-label="Toggle sidebar"
-                >
-                  {sidebarOpen ? (
-                    <X className="w-5 h-5 sm:w-6 sm:h-6" />
-                  ) : (
-                    <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
-                  )}
-                </button>
-                <h1 className="text-lg sm:text-xl font-semibold text-dashboard-text-primary">
-                  Dashboard
-                </h1>
-                <div className="w-9 sm:w-10"></div> {/* Spacer for centering */}
-              </div>
-            </div>
+
 
             {/* Desktop Header */}
             <div className="hidden md:block">
@@ -81,11 +63,6 @@ export default function Dashboard() {
             <main className="flex-1 overflow-y-auto">
               <div className="p-3 sm:p-4 md:p-6 lg:p-8">
                 <div className="max-w-7xl mx-auto space-y-4 sm:space-y-6 lg:space-y-8">
-                  {/* Dashboard Title and Date Range */}
-
-
-                  {/* KPI Cards */}
-                {/* Cards donde se muestran los cantidads de las empresas */}
 
 
                     {/* Search History Table */}

@@ -46,7 +46,7 @@ export default function Users() {
                   {Users.map((Users) => (
                     <div
                       key={Users.id}
-                      className="bg-gradient-to-br from-gray-800 via-gray-900 to-black shadow-lg rounded-xl p-6 text-center text-white grid place-items-center transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                      className="bg-gradient-to-br bg-[skyblue] to-black shadow-lg rounded-xl p-6 text-center text-white grid place-items-center transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
                       title={Users.nombre}
                     >
                       <span className="font-semibold text-lg">{Users.nombre}</span>

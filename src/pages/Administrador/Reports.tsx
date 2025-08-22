@@ -82,57 +82,14 @@ export default function Dashboard() {
               <div className="p-3 sm:p-4 md:p-6 lg:p-8">
                 <div className="max-w-7xl mx-auto space-y-4 sm:space-y-6 lg:space-y-8">
                   {/* Dashboard Title and Date Range */}
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 sm:mb-8 gap-3 sm:gap-4">
-                    <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-dashboard-text-primary">
-                      Dashboard
-                    </h1>
-                    {/* Date Range */}
-                    <div className="flex items-center space-x-2 text-sm sm:text-base text-dashboard-text-secondary">
-                      <CalendarDays className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
-                      <span className="whitespace-nowrap">
-                        11 may 2022 - 3 june 2022
-                      </span>
-                    </div>
-                  </div>
+
 
                   {/* KPI Cards */}
                 {/* Cards donde se muestran los cantidads de las empresas */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
-                  {Metrics.map((Metrics) => (
-                    <div
-                      key={Metrics.id}
-                      className="bg-gradient-to-br bg-[skyblue] to-black  rounded-xl  text-center text-white grid place-items-center transform duration-300 hover:scale-105 grid-cols-2 shadow-lg p-4 sm:p-6 lg:p-3"
-                      title={Metrics.cantidad}
-                    >
-                      <div className="flex gap-2">
-                        <div className="grid grid-cols-2">Cantidad metricas:
-                      <span className="font-semibold text-lg">{Metrics.cantidad}</span>
-                      Cantidad metricas 2:
-                      <span className="font-semibold text-lg">{Metrics.cantidad2}</span>
-                        </div>
-                      </div>
-                      <span className="font-semibold text-lg">{Metrics.cantidad3}</span>
-                      
-                    </div>
-                  ))}
-                </div>
-                  {/* Charts */}
-                  <Charts />
-                  <div className="flex gap-3 sm:gap-4 lg:gap-6">
-                  <OverviewWidget
-                    metric={{
-                      barMetric: "Bar Metric Example",
-                      lineMetric: "Line Metric Example",
-                      data: [
-                        { date: "2024-06-01", deviation: 5, net: 100 },
-                        { date: "2024-06-02", deviation: -2, net: 98 },
-                        { date: "2024-06-03", deviation: 3, net: 101 }
-                      ]
-                    }}
-                  />
-                  <TotalWidget />
-                  </div>
 
+
+                    {/* Search History Table */}
+                    <SearchHistoryTable />
                 </div>
               </div>
             </main>

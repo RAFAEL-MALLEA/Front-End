@@ -196,7 +196,11 @@ export function Charts() {
           </BarChart>
         </ResponsiveContainer>
       </div>
-      
+      <div>
+
+
+        
+      </div>
     </div>
   );
 }

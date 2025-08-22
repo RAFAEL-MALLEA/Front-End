@@ -7,6 +7,7 @@ import Configuracion from "./pages/Administrador/Configuracion";
 import Login from "./pages/Administrador/Login";
 import Users from "./pages/Administrador/users";
 import Users2 from "./pages/Administrador/users2";
+import Reports from "./pages/Administrador/Reports";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/Importar" element={<Importar />} />
         <Route path="/Configuracion" element={<Configuracion />} />
+        <Route path="/reports" element={<Reports />} />
         <Route path="*" element={<NotFound />} />
 
       </Routes>

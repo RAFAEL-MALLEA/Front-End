@@ -14,7 +14,7 @@ export default function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const Metrics = [
-    { id: 1, cantidad: "cantidad  en numero", cantidad2: "cantidad  en numero", cantidad3: "cantidad " },
+    { id: 1, cantidad: "akljdkaskd", cantidad2: "cantidad  en numero", cantidad3: "cantidad " },
     { id: 2, cantidad: "cantidad  en numero", cantidad2: "cantidad  en numero", cantidad3: "cantidad " },
     { id: 3, cantidad: "cantidad  en numero", cantidad2: "cantidad  en numero", cantidad3: "cantidad " },
     { id: 4, cantidad: "cantidad  en numero", cantidad2: "cantidad  en numero", cantidad3: "cantidad " },
